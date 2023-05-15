@@ -100,17 +100,20 @@ func TestTryPanics(t *testing.T) {
 	theErr := errors.New("something went wrong")
 	callCount := 0
 	err := try.Do(func(attempt int) (retry bool, err error) {
-		retry = attempt < 5
 		defer func() {
 			if r := recover(); r != nil {
 				err = errors.New(fmt.Sprintf("panic: %v", r))
 			}
 		}()
+
+		retry = attempt < 5
 		callCount++
+
 		if attempt > 2 {
 			panic("is so much")
 		}
 		err = theErr
+
 		return
 	})
 
