@@ -3,7 +3,7 @@ package try
 import "errors"
 
 var (
-	MaxRetries           = 10                                 // MaxRetries is the maximum number of retries before bailing.
+	MaxRetries           = 60                                 // MaxRetries is the maximum number of retries before bailing.
 	ErrMaxRetriesReached = errors.New("exceeded retry limit") // ErrMaxRetriesReached is returned when the function has failed to return true before MaxRetries is reached.
 )
 
